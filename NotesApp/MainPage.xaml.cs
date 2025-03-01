@@ -1,0 +1,36 @@
+﻿namespace NotesApp
+{
+    public partial class MainPage : ContentPage
+    {
+        //essa biblioteca cuida de todo metodo de arquivos
+        // File.WriteAllText vai salvar o texto que for escrito pelo utilizador
+        string caminho = FileSystem.AppDataDirectory;
+        string arquivo = "arquivo.txt";
+
+        public MainPage()
+        {
+            InitializeComponent();
+            if (File.Exists(Path.Combine(caminho, arquivo)))
+            {
+                ConteudoEditor.Text = File.ReadAllText(Path.Combine(caminho, arquivo));
+            }
+        }
+
+        private void SalvarButton_Clicked(object sender, EventArgs e)
+        {
+            //O conteudo vai armazenar oq for escrito em conteudo e o .text e para pegar o texto
+            string conteudo = ConteudoEditor.Text;
+
+            //Path.combine ele vai combinar os elementos 
+            File.WriteAllText(Path.Combine(caminho, arquivo), conteudo);
+        }
+
+        private void DeletarButton_Clicked(object sender, EventArgs e)
+        {
+            File.Delete(Path.Combine(caminho, arquivo));
+            DisplayAlert("Arquivo apagado",$"O arquivo {arquivo} foi apagado com sucesso");
+            ConteudoEditor.Text = "";
+        }
+    }
+
+}
