@@ -28,9 +28,11 @@
         private void DeletarButton_Clicked(object sender, EventArgs e)
         {
             File.Delete(Path.Combine(caminho, arquivo));
-            DisplayAlert("Arquivo apagado",$"O arquivo {arquivo} foi apagado com sucesso");
+            DisplayAlert("Oi",$"O arquivo {arquivo} foi apagado com sucesso","OK");
             ConteudoEditor.Text = "";
         }
+
+      
     }
 
 }
