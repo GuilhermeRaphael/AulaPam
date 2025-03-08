@@ -1,4 +1,6 @@
-﻿namespace NotesApp
+﻿
+
+namespace NotesApp
 {
     public partial class MainPage : ContentPage
     {
@@ -23,6 +25,8 @@
 
             //Path.combine ele vai combinar os elementos 
             File.WriteAllText(Path.Combine(caminho, arquivo), conteudo);
+            DisplayAlert("OK", "Arquivo Salvo", "Valeu");
+           //So funciona no mobile == Toast.MakeText("Arquivo Salvo");
         }
 
         private void DeletarButton_Clicked(object sender, EventArgs e)
